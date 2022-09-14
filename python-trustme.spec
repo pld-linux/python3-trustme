@@ -8,13 +8,13 @@
 Summary:	Number 1 quality TLS certs while you wait, for the discerning tester
 Summary(pl.UTF-8):	Najlepsze certyfikaty TLS dla wnikliwych testerów
 Name:		python-trustme
-Version:	0.6.0
-Release:	4
+Version:	0.9.0
+Release:	1
 License:	Apache v2.0 or MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/trustme/
 Source0:	https://files.pythonhosted.org/packages/source/t/trustme/trustme-%{version}.tar.gz
-# Source0-md5:	4f354b9f9563a0f9bd05bb189a713afd
+# Source0-md5:	0e4d698e5aecaf8306cf440bf3dcbbe0
 URL:		https://pypi.org/project/trustme/
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
@@ -26,21 +26,19 @@ BuildRequires:	python-idna >= 2.8
 BuildRequires:	python-ipaddress
 BuildRequires:	python-more_itertools >= 5.0.0
 BuildRequires:	python-pyOpenSSL >= 19.1.0
-# >=4.6.3 specified
-BuildRequires:	python-pytest >= 3
+BuildRequires:	python-pytest >= 4.6.3
 BuildRequires:	python-service_identity >= 18.1.0
 %endif
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules >= 1:3.5
+BuildRequires:	python3-modules >= 1:3.6
 BuildRequires:	python3-setuptools
 %if %{with tests}
 BuildRequires:	python3-cryptography >= 2.8
 BuildRequires:	python3-idna >= 2.8
 BuildRequires:	python3-more_itertools >= 5.0.0
 BuildRequires:	python3-pyOpenSSL >= 19.1.0
-# >=4.6.3 specified
-BuildRequires:	python3-pytest >= 3
+BuildRequires:	python3-pytest >= 4.6.3
 BuildRequires:	python3-service_identity >= 18.1.0
 %endif
 %endif
@@ -72,7 +70,7 @@ któremu nikt nie ufa. Ale samemu można im zaufać.
 Summary:	Number 1 quality TLS certs while you wait, for the discerning tester
 Summary(pl.UTF-8):	Najlepsze certyfikaty TLS dla wnikliwych testerów
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.5
+Requires:	python3-modules >= 1:3.6
 
 %description -n python3-trustme
 trustme is a tiny Python package that does one thing: it gives you a
@@ -107,6 +105,8 @@ Dokumentacja API modułu Pythona trustme.
 %py_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTHONPATH=$(pwd) \
 %{__python} -m pytest tests
 %endif
 %endif
@@ -115,6 +115,8 @@ Dokumentacja API modułu Pythona trustme.
 %py3_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTHONPATH=$(pwd) \
 %{__python3} -m pytest tests
 %endif
 %endif
