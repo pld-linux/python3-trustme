@@ -9,7 +9,7 @@ Summary:	Number 1 quality TLS certs while you wait, for the discerning tester
 Summary(pl.UTF-8):	Najlepsze certyfikaty TLS dla wnikliwych testerów
 Name:		python-trustme
 Version:	0.9.0
-Release:	2
+Release:	3
 License:	Apache v2.0 or MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/trustme/
